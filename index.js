@@ -164,7 +164,11 @@ function buildDiscordMessageUrl({ guildId, channelId, messageId }) {
 }
 
 client.login(DISCORD_TOKEN);
-// Renderの仕様を突破するためのダミーWebサーバー
+// Render審査通過用の最強ダミーサーバー
+const port = process.env.PORT || 10000;
 http.createServer((req, res) => {
-  res.end('Bot is running!');
-}).listen(process.env.PORT || 3000);
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Bot is active!\n');
+}).listen(port, '0.0.0.0', () => {
+  console.log('Web Server is listening on port ' + port);
+});
