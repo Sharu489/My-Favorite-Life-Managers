@@ -163,3 +163,8 @@ function buildDiscordMessageUrl({ guildId, channelId, messageId }) {
 }
 
 client.login(DISCORD_TOKEN);
+// Renderの仕様を突破するためのダミーWebサーバー
+import http from 'http';
+http.createServer((req, res) => {
+  res.end('Bot is running!');
+}).listen(process.env.PORT || 3000);
